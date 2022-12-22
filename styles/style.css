@@ -1,0 +1,61 @@
+﻿.page {
+  width: 400px;
+  margin: 0 auto;
+  padding-top: 30vh;
+  font-family: "Dosis", Arial, sans-serif;
+  font-weight: 700;
+  font-size: 24px;
+  color: #222;
+}
+
+.calc {
+  padding: 50px;
+  background-color: rgba(200, 200, 200, 0.3);
+  border-radius: 10px;
+  box-shadow: 0 0 3px black;
+}
+.calc__display {
+  width: 260px;
+  margin: 0 auto;
+  background-color: rgba(200, 200, 200, 0.3);
+  border-radius: 10px;
+  height: 50px;
+  display: flex;
+  padding: 0 20px 0;
+  justify-content: flex-end;
+  align-items: center;
+  box-shadow: 0 0 3px black;
+}
+
+.calc__display-text {
+  display: block;
+  text-align: center;
+  font-size: 30px;
+}
+
+.calc__buttons {
+  display: grid;
+  margin: 20px auto 0;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  width: min-content;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: rgba(200, 200, 200, 0.3);
+  box-shadow: 0 0 3px black;
+}
+
+.calc__button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  background-color: rgba(200, 200, 200, 0.8);
+  border-radius: 10px;
+  box-shadow: 0 0 5px black;
+}
+
+.calc__button:hover {
+  background-color: rgba(200, 200, 200, 0.5);
+}
