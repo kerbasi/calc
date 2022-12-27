@@ -32,6 +32,31 @@ buttons.forEach((button) =>
   })
 );
 
+console.log(calc);
+
 function calc(a, b, operator) {
-  console.log(a, b, operator);
+  const operations = {
+    "+": add,
+    "-": diff,
+    "*": mul,
+    "/": div,
+  };
+
+  return operations[operator](a, b);
+}
+
+function add(a, b) {
+  return a + b;
+}
+
+function diff(a, b) {
+  return a - b;
+}
+
+function mul(a, b) {
+  return a * b;
+}
+
+function div(a, b) {
+  return a / b;
 }
