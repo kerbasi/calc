@@ -40,6 +40,14 @@ function div(a, b) {
 function setDisplay(value) {
   display.textContent = value;
   setAboveDisplay(firstOperand, secondOperand, operator);
+  if (display.innerText.length > 11) {
+    display.style.fontSize = `${
+      1.25 - Math.floor(display.innerText.length / 6) / 5
+    }em`;
+  } else {
+    display.style.fontSize = "30px";
+  }
+  console.log(display.innerText.length, display.style.fontSize);
 }
 
 function setAboveDisplay(value1, value2, operator) {
