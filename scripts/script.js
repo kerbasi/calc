@@ -8,16 +8,62 @@ let operator = "";
 let enableFirstOperatorSetting = true;
 let pointUsed = false;
 
+function calc(a, b, operator) {
+  const operations = {
+    "+": add,
+    "-": diff,
+    "*": mul,
+    "/": div,
+  };
+  if (operator === "=") {
+    return b;
+  }
+  return operations[operator](a, b);
+}
+
+function add(a, b) {
+  return Number(a) + Number(b);
+}
+
+function diff(a, b) {
+  return Number(a) - Number(b);
+}
+
+function mul(a, b) {
+  return Number(a) * Number(b);
+}
+
+function div(a, b) {
+  return Number(a) / Number(b);
+}
+
+function setDisplay(value) {
+  display.textContent = value;
+  setAboveDisplay(firstOperand, secondOperand, operator);
+}
+
+function setAboveDisplay(value1, value2, operator) {
+  displayAbove.textContent = `${value1} ${
+    !enableFirstOperatorSetting ? operator : ""
+  } ${!enableFirstOperatorSetting ? value2 : ""}`;
+}
+
+function resetCalc() {
+  firstOperand = "0";
+  secondOperand = "0";
+  operator = "";
+  enableFirstOperatorSetting = true;
+  pointUsed = false;
+  setDisplay(firstOperand);
+}
+
 buttons.addEventListener("click", (event) => {
-  if (Array.from(event.target.classList).includes("calc__button")) {
-    const value = event.target.querySelector("p").innerHTML;
+  if (event.target.classList.contains("calc__button")) {
+    event.target.classList.add("clicked");
+    setTimeout(() => event.target.classList.remove("clicked"), 50);
+    const value = event.target.innerText;
     if (value === "C") {
-      firstOperand = "0";
-      secondOperand = "0";
-      operator = "";
-      enableFirstOperatorSetting = true;
-      pointUsed = false;
-      setDisplay(firstOperand);
+      resetCalc();
     } else if (
       value !== "*" &&
       value !== "/" &&
@@ -61,41 +107,3 @@ buttons.addEventListener("click", (event) => {
     }
   }
 });
-
-function calc(a, b, operator) {
-  const operations = {
-    "+": add,
-    "-": diff,
-    "*": mul,
-    "/": div,
-  };
-
-  return operations[operator](a, b);
-}
-
-function add(a, b) {
-  return Number(a) + Number(b);
-}
-
-function diff(a, b) {
-  return Number(a) - Number(b);
-}
-
-function mul(a, b) {
-  return Number(a) * Number(b);
-}
-
-function div(a, b) {
-  return Number(a) / Number(b);
-}
-
-function setDisplay(value) {
-  display.textContent = value;
-  setAboveDisplay(firstOperand, secondOperand, operator);
-}
-
-function setAboveDisplay(value1, value2, operator) {
-  displayAbove.textContent = `${value1} ${
-    !enableFirstOperatorSetting ? operator : ""
-  } ${!enableFirstOperatorSetting ? value2 : ""}`;
-}
