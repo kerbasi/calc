@@ -93,9 +93,18 @@ buttons.addEventListener("click", (event) => {
       }
     } else {
       if (enableFirstOperatorSetting) {
-        operator = value;
-        enableFirstOperatorSetting = false;
-        pointUsed = false;
+        if (value === "-" && firstOperand === "0") {
+          firstOperand = "-";
+          setDisplay(firstOperand);
+        } else {
+          if (firstOperand === "-") {
+            firstOperand = "0";
+          }
+          operator = value;
+          enableFirstOperatorSetting = false;
+          pointUsed = false;
+          setDisplay(firstOperand);
+        }
       } else {
         let sum = calc(firstOperand, secondOperand, operator);
         setDisplay(sum);
